@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Museum Dashboard</title>
+</head>
+<body>
+    <h1>Museum Dashboard</h1>
+    <button onclick="window.location.href='/edit'">Edit wsn_config.json</button>
+    <h2>Rooms</h2>
+    {% for room_id, room in rooms.items() %}
+        <button style="background-color: {% if room.status != 'OK' %}red{% else %}green{% endif %};"
+                onclick="window.location.href='/room/{{ room_id }}'">
+            {{ room_id }}
+        </button>
+    {% endfor %}
+
+    <script>
+        setInterval(() => {
+            location.reload();
+        }, 5000);
+    </script>
+</body>
+</html>

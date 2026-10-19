@@ -1,0 +1,29 @@
+# Secrets and deployment configuration
+.env
+.env.*
+!.env.example
+wsn_config.json
+data.json
+azure_credentials.json
+
+# Runtime output
+events_table.csv
+*.log
+*.out
+__pycache__/
+*.py[cod]
+test_images/
+captured_images/
+
+# Research data and checkpoints: distribute through versioned releases, not Git
+image_dataset_*/
+*.jpg
+*.jpeg
+*.png
+*.safetensors
+*.bin
+hf_output/
+
+# Editor and platform files
+.vscode/
+.DS_Store

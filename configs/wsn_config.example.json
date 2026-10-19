@@ -1,0 +1,40 @@
+{
+  "nodes": {
+    "continuous_sensing_devices": {
+      "temp_humid_01": {
+        "name": "TemperatureHumiditySensor01",
+        "location": "room_01",
+        "ble_name": "REPLACE_WITH_BLE_NAME",
+        "sensor_UUID": "REPLACE_WITH_SERVICE_UUID",
+        "sensor_type": "Temperature and humidity sensor",
+        "characteristics": {
+          "temperature": {
+            "characteristic_UUID": "REPLACE_WITH_TEMPERATURE_CHARACTERISTIC_UUID",
+            "characteristic_name": "temperature"
+          },
+          "humidity": {
+            "characteristic_UUID": "REPLACE_WITH_HUMIDITY_CHARACTERISTIC_UUID",
+            "characteristic_name": "humidity"
+          }
+        }
+      }
+    },
+    "triggers": {
+      "pir_01": {
+        "name": "PIRSensor01",
+        "location": "room_01",
+        "ble_name": "REPLACE_WITH_BLE_NAME"
+      }
+    },
+    "cam_nodes": {
+      "camera_01": {
+        "name": "Camera01",
+        "location": "room_01",
+        "ip_address": "http://REPLACE_WITH_CAMERA_HOST"
+      }
+    },
+    "distance_senors": {}
+  },
+  "routines": [],
+  "actions": []
+}

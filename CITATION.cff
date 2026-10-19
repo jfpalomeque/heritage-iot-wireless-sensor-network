@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the associated preprint."
+title: "Modular IoT Monitoring for Cultural Heritage"
+authors:
+  - family-names: Palomeque-Gonzalez
+    given-names: Juan
+date-released: 2026-10-19
+license: MIT
+url: "https://arxiv.org/abs/2508.00849"
+preferred-citation:
+  type: article
+  authors:
+    - family-names: Palomeque-Gonzalez
+      given-names: Juan
+  title: "A Modular, Low-Cost IoT System for Environmental and Behavioural Monitoring in Cultural Heritage Sites"
+  year: 2025
+  archive: arXiv
+  archive_location: "2508.00849"
+  url: "https://arxiv.org/abs/2508.00849"

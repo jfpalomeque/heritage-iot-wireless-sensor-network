@@ -1,0 +1,13 @@
+{
+  "last_event_line": 0,
+  "rooms": {
+    "room_01": {
+      "temperature": null,
+      "humidity": null,
+      "movement": "Unknown",
+      "status": "Unknown",
+      "image_url": null,
+      "cabinets": {}
+    }
+  }
+}

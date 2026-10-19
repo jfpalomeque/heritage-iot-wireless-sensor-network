@@ -1,0 +1,8 @@
+bleak
+cron-converter
+Flask
+Pillow
+requests
+torch
+transformers
+azure-storage-blob

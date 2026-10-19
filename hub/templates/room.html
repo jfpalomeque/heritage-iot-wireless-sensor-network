@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Room {{ room_id }}</title>
+</head>
+<body>
+    <h1>Room {{ room_id }}</h1>
+    <button onclick="window.location.href='/'">Back</button>
+    <button onclick="setRoomStatus()">Set Room Status to OK</button>
+    <h1>Room Details</h1>
+    <p><strong>Temperature:</strong> {{ room.temperature }}</p>
+    <p><strong>Humidity:</strong> {{ room.humidity }}</p>
+    <p><strong>Movement:</strong> {{ room.movement }}</p>
+    <p><strong>Status:</strong> {{ room.status }}</p>
+    <p><strong>Image:</strong></p>
+    <p><img src="{{ url_for('serve_image', filename=room.image_url) }}" alt="Room Image"></p>
+    <h2>Cabinets</h2>
+    {% for cabinet_id, cabinet in room.cabinets.items() %}
+        <div style="background-color: {% if cabinet.status != 'OK' %}red{% else %}green{% endif %};">
+            <p>{{ cabinet_id }}</p>
+            <button onclick="setCabinetStatus('{{ cabinet_id }}')">Set Cabinet Status to OK</button>
+        </div>
+    {% endfor %}
+    <script>
+        function setRoomStatus() {
+            fetch(`/set_room_status/{{ room_id }}`, {
+                method: 'POST'
+            }).then(() => {
+                location.reload();
+            });
+        }
+        function setCabinetStatus(cabinet_id) {
+            fetch(`/set_cabinet_status/{{ room_id }}/${cabinet_id}`, {
+                method: 'POST'
+            }).then(() => {
+                location.reload();
+            });
+        }
+    </script>
+    <script>
+        setInterval(() => {
+            location.reload();
+        }, 5000);
+    </script>
+</body>
+</html>
