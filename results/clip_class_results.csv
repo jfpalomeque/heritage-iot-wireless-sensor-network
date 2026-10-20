@@ -1,0 +1,11 @@
+task,label,correct,wrong,accuracy,source
+eight_class,carrying_a_blunt_object,0,100,0.00,MSc report Table 4
+eight_class,carrying_a_knife,13,37,0.26,MSc report Table 4
+eight_class,drinking,11,89,0.11,MSc report Table 4
+eight_class,eating,24,76,0.24,MSc report Table 4
+eight_class,taking_pictures,83,17,0.83,MSc report Table 4
+eight_class,touching,0,100,0.00,MSc report Table 4
+eight_class,walking_a_dog,7,93,0.07,MSc report Table 4
+eight_class,watching_calm,6,94,0.06,MSc report Table 4
+binary,negative_behaviour,378,172,0.69,MSc report Table 4
+binary,positive_behaviour,102,98,0.51,MSc report Table 4
