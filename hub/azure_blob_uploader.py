@@ -3,6 +3,7 @@ import datetime
 import glob
 import json
 import os
+from pathlib import Path
 from azure.storage.blob import BlobServiceClient
 
 def _current_dashboard_images(data_file_path):
@@ -27,6 +28,7 @@ def upload_to_azure(csv_file_path="events_table.csv", data_file_path="data.json"
     csv_container_name = os.environ.get("AZURE_CSV_CONTAINER", "csv-logs")
     images_container_name = os.environ.get("AZURE_IMAGES_CONTAINER", "images")
     current_images = _current_dashboard_images(data_file_path)
+    runtime_dir = Path(os.environ.get("WSN_RUNTIME_DIR", ".")).resolve()
 
     if os.path.exists(csv_file_path):
         blob_name = f"{timestamp}_{os.path.basename(csv_file_path)}"
@@ -38,7 +40,7 @@ def upload_to_azure(csv_file_path="events_table.csv", data_file_path="data.json"
             csv.DictWriter(csvfile, fieldnames=["timestamp", "location", "event", "details"]).writeheader()
         print(f"Archived {blob_name} and reset {csv_file_path}")
 
-    for jpg_file in glob.glob("*.jpg"):
+    for jpg_file in glob.glob(str(runtime_dir / "*.jpg")):
         if os.path.basename(jpg_file) in current_images:
             continue
         client = blob_service_client.get_blob_client(container=images_container_name, blob=os.path.basename(jpg_file))
