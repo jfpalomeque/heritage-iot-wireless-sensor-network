@@ -1,0 +1,7 @@
+node,sensor_or_camera,charge_mAh_1h,camera_no_http_mAh_1h,camera_continuous_comm_mAh_1h,acquisition_runtime_seconds,combined_runtime_seconds,rssi_dBm_at_1m,source
+temperature_humidity,DHT22,84,,,23,46,-90,MSc report Table 2
+presence,HW-416-B PIR,114,,,12,,-101,MSc report Table 2
+photoelectric,E3F-R2N1,54,,,13,,-86,MSc report Table 2
+sound,KY-038,60,,,11,,-89,MSc report Table 2
+distance,HC-SR04,54,,,6,,-80,MSc report Table 2
+camera,OV2640 / ESP32-CAM,,120,126,4,,,MSc report and camera evaluation
