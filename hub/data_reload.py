@@ -1,42 +1,50 @@
-import json
 import csv
+import json
+import os
+import re
+
+SENSOR_RE = re.compile(r"sensor:\s*(?P<sensor>[^,]+),\s*characteristic:\s*(?P<characteristic>[^,]+),\s*value:\s*(?P<value>.+)$", re.IGNORECASE)
+TRIGGER_RE = re.compile(r"trigger:\s*(?P<trigger>[^,]+),\s*activated:\s*(?P<activated>True|False)", re.IGNORECASE)
+IMAGE_RE = re.compile(r"Image\s+(?P<path>.+?)\s+saved", re.IGNORECASE)
 
 def data_reload(data_json_path, events_table_csv_path):
-    # Load the JSON data from the file
-    with open(data_json_path, 'r') as file:
+    """Update dashboard state from event-log rows not processed previously."""
+    with open(data_json_path, "r", encoding="utf-8") as file:
         data = json.load(file)
+    if not os.path.exists(events_table_csv_path):
+        return
+    with open(events_table_csv_path, newline="", encoding="utf-8") as file:
+        rows = list(csv.DictReader(file))
+    last_event_line = int(data.get("last_event_line", 0) or 0)
+    if last_event_line > len(rows):
+        last_event_line = 0
+    data["last_event_line"] = len(rows)
 
-    # Load the events table from the CSV file
-    with open(events_table_csv_path, mode='r', newline='') as file:
-        reader = csv.reader(file)
-        events_table_list = [line for line in reader]
-
-    len_table = len(events_table_list)
-    last_event_line = data['last_event_line']
-    data['last_event_line'] = len_table
-    events_table_list = events_table_list[(last_event_line+1):]
-
-    for line in events_table_list:
-        room = line[1]
-        if "sensor: temp_humidA, characteristic: Temperature_sensor" in line[3]:
-            temperature = line[3].split(" ")[-1]
-            data['rooms'][room]["temperature"] = temperature
-
-        if "sensor: temp_humidA, characteristic: Humidity_sensor" in line[3]:
-            humidity = line[3].split(" ")[-1]
-            data['rooms'][room]["humidity"] = humidity
-
-        if "trigger: PIR_nodeA, activated: False" in line[3]:
-            data['rooms'][room]["movement"] = "No detected"
-
-        if "trigger: pirNoderoom1, activated: True" in line[3]:
-            data['rooms'][room]["movement"] = "Detected"
-
-        if "Image saved" in line[2]:
-            image_path = line[3].split(" ")[-2]
-            data['rooms'][room]["image_url"] = image_path
-            #TODO: Add more events to the loop
-
-
-    with open(data_json_path, 'w') as file:
+    for row in rows[last_event_line:]:
+        location = (row.get("location") or "").strip()
+        room_id = location.split("|", 1)[0]
+        room = data.get("rooms", {}).get(room_id)
+        if room is None:
+            continue
+        event = (row.get("event") or "").strip().lower()
+        details = row.get("details") or ""
+        if event == "sensor read":
+            match = SENSOR_RE.search(details)
+            if match:
+                characteristic = match.group("characteristic").lower()
+                value = match.group("value").strip()
+                if "temp" in characteristic:
+                    room["temperature"] = value
+                elif "humid" in characteristic:
+                    room["humidity"] = value
+        elif event == "trigger":
+            match = TRIGGER_RE.search(details)
+            if match and "pir" in match.group("trigger").lower():
+                room["movement"] = "Detected" if match.group("activated").lower() == "true" else "Not detected"
+        elif event == "image saved":
+            match = IMAGE_RE.search(details)
+            if match:
+                room["image_url"] = os.path.basename(match.group("path"))
+    with open(data_json_path, "w", encoding="utf-8") as file:
         json.dump(data, file, indent=4)
+        file.write("\n")
