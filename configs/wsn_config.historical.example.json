@@ -1,0 +1,49 @@
+{
+  "_note": "Sanitized transcription of the experimental deployment configuration documented in the MSc report appendix. Private network addresses have been replaced with placeholders. Active routines/actions are retained for reproducibility documentation.",
+  "nodes": {
+    "continuous_sensing_devices": {
+      "temp_humidA": {
+        "name": "TempHumiditySensor01",
+        "location": "room1",
+        "ble_name": "TempHumiditySensor01",
+        "sensor_UUID": "16150f38-e7a9-4fe1-ae08-48464baf25b2",
+        "sensor_type": "Temperature and humidity sensor",
+        "characteristics": {
+          "Temperature_sensor": {
+            "characteristic_UUID": "ff99948c-18ff-4ed8-942e-512b9b24b6da",
+            "characteristic_name": "Temperature_sensor"
+          },
+          "Humidity_sensor": {
+            "characteristic_UUID": "8084aa6b-6cae-461f-9540-e1a5768de49d",
+            "characteristic_name": "Humidity_sensor"
+          }
+        }
+      }
+    },
+    "triggers": {
+      "pirNoderoom1": {"name": "pirNoderoom1", "location": "room1", "ble_name": "pirNoderoom1"},
+      "photo_electric_room1c1": {"name": "photo_electric_room1c1", "location": "room1", "ble_name": "photo_electric_room1c1"},
+      "soundNoderoom1": {"name": "soundNoderoom1", "location": "room1", "ble_name": "soundNoderoom1"}
+    },
+    "cam_nodes": {
+      "esp32-camAroom1": {"name": "esp32-camAroom1", "location": "room1", "ip_address": "http://REPLACE_WITH_CAMERA_A_HOST"},
+      "esp32-camBroom1": {"name": "esp32-camBroom1", "location": "room1", "ip_address": "http://REPLACE_WITH_CAMERA_B_HOST"},
+      "esp32-camCroom1": {"name": "esp32-camCroom1", "location": "room1", "ip_address": "http://REPLACE_WITH_CAMERA_C_HOST"}
+    },
+    "distance_senors": {
+      "distance_sensor1": {"name": "distance_sensor1", "ble_name": "distanceSensor1", "location": "room1", "cabinet": "cabinet1"}
+    }
+  },
+  "routines": [
+    {"name": "temp_humidA temp read", "location": "room1", "script": "read_sensor(nodes, 'temp_humidA', 'Temperature_sensor', 'events_table.csv')", "schedule": "*/5 * * * *"},
+    {"name": "temp_humidA humidity read", "location": "room1", "script": "read_sensor(nodes, 'temp_humidA', 'Humidity_sensor', 'events_table.csv')", "schedule": "*/5 * * * *"},
+    {"name": "router request", "location": "NA", "script": "net_request('http://REPLACE_WITH_ROUTER_HOST', 'events_table.csv')", "schedule": "*/5 * * * *"},
+    {"name": "azure_blob_upload", "location": "NA", "script": "upload_to_azure()", "schedule": "0 * * * *"}
+  ],
+  "actions": [
+    {"name": "pirNoderoom1 -> esp32-camsroom1", "location": "room1", "trigger": "trigger_value = trigger_ble(nodes, 'pirNoderoom1', 'events_table.csv')", "script": "take_save_delete_image(nodes, 'esp32-camAroom1', 'events_table.csv');take_save_delete_image(nodes, 'esp32-camBroom1', 'events_table.csv');take_save_delete_image(nodes, 'esp32-camCroom1', 'events_table.csv')"},
+    {"name": "distance_sensor1 -> distance_sensor1", "location": "room1", "trigger": "trigger_value = distance_sensor_trigger(nodes, 'distance_sensor1', 5)", "script": "distance_sensor_reading(nodes, 'distance_sensor1', 'events_table.csv')"},
+    {"name": "soundNoderoom1 -> row", "location": "room1", "trigger": "trigger_value = trigger_ble(nodes, 'soundNoderoom1', 'events_table.csv')", "script": "write_row('room1', 'Loud sound detected', 'events_table.csv')"},
+    {"name": "photo_electric_room1c1 -> row", "location": "room1", "trigger": "trigger_value = trigger_ble(nodes, 'photo_electric_room1c1', 'events_table.csv')", "script": "write_row('room1|cabinet1', 'Virtual fence crossed', 'events_table.csv')"}
+  ]
+}
