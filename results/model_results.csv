@@ -1,0 +1,6 @@
+model,strategy,eight_class_training_seconds,eight_class_accuracy,binary_training_seconds,binary_accuracy,source
+CNN,bespoke ANN,249,0.93,129,0.84,MSc report Table 3
+FNN,bespoke ANN,138,0.83,81,0.80,MSc report Table 3
+RNN,bespoke ANN,23,0.69,12,0.85,MSc report Table 3
+ViT,fine-tuned,887,0.9533333333333334,470,1.0,preserved ViT JSON plus MSc report runtime
+CLIP,zero-shot,,0.19,,0.64,MSc report Table 3
