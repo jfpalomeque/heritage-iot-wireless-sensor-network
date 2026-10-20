@@ -1,13 +1,13 @@
-# Dataset release
+# Dataset status
 
-The original archive contains behavioural image collections used for binary and multiclass experiments. Because these files may depict identifiable people and sensitive behaviours, they are not included in Git.
+The original archive contains the behavioural image collections used for binary and eight-class experiments. These files are not included in Git.
 
-The agreed release policy is to publish the full dataset externally. Before publication, create a versioned Zenodo/Hugging Face dataset release containing:
+No public dataset release should be assumed from this repository. Before any external release, confirm the right to distribute every image and create a versioned dataset package containing:
 
 1. a dataset card describing provenance, consent/legal basis, locations, intended use, risks, and licence;
-2. a `SHA256SUMS` manifest and exact directory layout;
-3. class definitions matching `configs/image_labels.json`;
+2. a SHA-256 manifest and exact directory layout;
+3. class definitions matching the released label configuration;
 4. duplicate detection and split protocol documentation;
 5. an access/removal contact and any necessary restrictions.
 
-Do not publish images until the right to distribute every image has been confirmed. Add the release DOI/URL and version here once published.
+Until that review is complete, the companion repository documents dataset size, classes, and historical evaluation results without distributing the images.
