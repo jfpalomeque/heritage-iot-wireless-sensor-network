@@ -1,0 +1,10 @@
+component,model_or_description,quantity,role,contemporaneous_unit_price_gbp,notes
+single-board computer,Raspberry Pi 4 Model B 4 GB,1,computing hub,,Price not captured in the original experiment
+microcontroller,ESP32-WROOM-32 development board,5,BLE sensor nodes,,One each for DHT22 PIR photoelectric sound and distance nodes
+camera microcontroller,AI-Thinker ESP32-CAM with OV2640,3,image capture nodes,,Used over Wi-Fi HTTP
+temperature humidity sensor,DHT22,1,temperature and relative humidity sensing,,
+PIR sensor,HW-416-B,1,motion or presence trigger,,
+photoelectric sensor,E3F-R2N1,1,virtual-fence trigger,,
+sound sensor,KY-038,1,sound trigger,,
+ultrasonic sensor,HC-SR04,1,distance sensing,,
+supporting hardware,power supplies wiring breadboards and connectors,not reconstructed,assembly and power,,Exact inventory and prices were not preserved
