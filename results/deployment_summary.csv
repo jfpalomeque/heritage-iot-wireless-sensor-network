@@ -1,0 +1,8 @@
+metric,value,unit,source
+testing_duration,24,hours,MSc report
+testing_days,8,days,MSc report
+total_log_entries,14149,count,MSc report
+trigger_checks,10636,count,MSc report
+sensor_readings,769,count,MSc report
+network_requests,526,count,MSc report
+trigger_events,199,count,MSc report
