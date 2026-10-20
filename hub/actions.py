@@ -13,7 +13,9 @@ from PIL import Image
 from AI_image_analysers import VIT_analyze_image_multilabel
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+RUNTIME_DIR = os.path.abspath(os.environ.get("WSN_RUNTIME_DIR", BASE_DIR))
 DEFAULT_LABELS_PATH = os.path.abspath(os.path.join(BASE_DIR, "..", "configs", "image_labels.json"))
+os.makedirs(RUNTIME_DIR, exist_ok=True)
 
 def take_save_delete_image(nodes, cam_name, csv_file_name):
     cam_details = nodes["cam_nodes"][cam_name]
@@ -36,13 +38,14 @@ def take_save_delete_image(nodes, cam_name, csv_file_name):
 
     image_data = download_response.text.split(",", 1)[1]
     image = Image.open(BytesIO(base64.b64decode(image_data)))
-    image_file_name = f"image_{cam_name}_{str(datetime.datetime.now()).replace(' ', '_')}.jpg"
+    image_basename = f"image_{cam_name}_{str(datetime.datetime.now()).replace(' ', '_')}.jpg"
+    image_file_name = os.path.join(RUNTIME_DIR, image_basename)
     image.save(image_file_name)
 
     time.sleep(2)
     requests.get(cam_ip + "/delete", timeout=25)
 
-    row_data = [str(datetime.datetime.now()), cam_details["location"], "Image saved", f"Image {image_file_name} saved"]
+    row_data = [str(datetime.datetime.now()), cam_details["location"], "Image saved", f"Image {image_basename} saved"]
     with open(csv_file_name, "a", newline="") as csvfile:
         csv.writer(csvfile).writerow(row_data)
 
@@ -53,11 +56,11 @@ def take_save_delete_image(nodes, cam_name, csv_file_name):
 
     label, model = VIT_analyze_image_multilabel(image_file_name, labels_path, model_path)
     if label == "negative":
-        message = f"Image {image_file_name} labeled as {label} by {model} | ALARM!"
+        message = f"Image {image_basename} labeled as {label} by {model} | ALARM!"
     elif label == "positive":
-        message = f"Image {image_file_name} labeled as {label} by {model} | OK"
+        message = f"Image {image_basename} labeled as {label} by {model} | OK"
     else:
-        message = f"Image {image_file_name} could not be classified by {model}"
+        message = f"Image {image_basename} could not be classified by {model}"
 
     row_data = [str(datetime.datetime.now()), cam_details["location"], "Image analysed", message]
     with open(csv_file_name, "a", newline="") as csvfile:
