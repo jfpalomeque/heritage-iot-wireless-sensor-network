@@ -2,24 +2,49 @@
 
 ## Raspberry Pi hub
 
-```bash
-cd hub
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-cp ../configs/wsn_config.example.json /secure/location/wsn_config.json
-export WSN_CONFIG=/secure/location/wsn_config.json
-python main.py
-```
+Create a runtime directory outside version control and copy either the minimal scaffold or the sanitized historical configuration into it.
 
-The historical scripts assume a Linux/Raspberry Pi BLE environment. Pair and validate each node before configuring routines or actions. Keep `events_table.csv`, captured images, runtime `data.json`, and private configuration outside version control.
+    cd hub
+    python -m venv .venv
+    source .venv/bin/activate
+    pip install -r requirements.txt
+
+    mkdir -p /secure/location/iot-runtime
+    cp ../configs/wsn_config.example.json /secure/location/iot-runtime/wsn_config.json
+    cp ../configs/data.example.json /secure/location/iot-runtime/data.json
+
+    export WSN_RUNTIME_DIR=/secure/location/iot-runtime
+    export WSN_CONFIG=/secure/location/iot-runtime/wsn_config.json
+    export WSN_DATA=/secure/location/iot-runtime/data.json
+    export WSN_EVENTS=/secure/location/iot-runtime/events_table.csv
+
+    python main.py
+
+The historical scripts assume a Linux/Raspberry Pi BLE environment. Configuration is trusted executable input because routines and actions are evaluated by the recovered runner. Do not accept configuration from untrusted users.
+
+For the original experimental topology, schedules, and actions, consult `configs/wsn_config.historical.example.json`. Replace all network placeholders before use. The historical key `distance_senors` is intentionally preserved for compatibility with the recovered code.
+
+## Local dashboard
+
+Run `python app.py` with the same runtime environment variables. The dashboard editor validates JSON and writes changes to `WSN_CONFIG`.
+
+## Image classification
+
+Model binaries are not stored in Git. Set:
+
+    export IMAGE_LABELS_PATH=/path/to/configs/image_labels.json
+    export VIT_MODEL_PATH=/path/to/local/fine-tuned-model
+
+before enabling camera actions that call the ViT classifier.
 
 ## Camera node
 
-Copy `firmware/camera/` into an Arduino sketch folder, set local Wi-Fi credentials, select the correct ESP32-CAM board configuration, and upload. Set the node's private address only in the runtime hub configuration.
+Copy `firmware/camera/` into an Arduino sketch folder, set local Wi-Fi credentials, select the correct ESP32-CAM board configuration, and upload. Configure the node's private address only in runtime configuration.
+
+The prototype camera server has no authentication. Keep it on a controlled local network and add appropriate authentication, segmentation, transport protection, and privacy controls for any real deployment.
 
 ## Optional Azure services
 
-Set `AZURE_STORAGE_CONNECTION_STRING`, `AZURE_CSV_CONTAINER`, and `AZURE_IMAGES_CONTAINER` in the hub runtime environment before enabling the uploader. For the Streamlit dashboard, set `AZURE_SQL_SERVER`, `AZURE_SQL_DATABASE`, `AZURE_SQL_USERNAME`, and `AZURE_SQL_PASSWORD`.
+Set `AZURE_STORAGE_CONNECTION_STRING`, `AZURE_CSV_CONTAINER`, and `AZURE_IMAGES_CONTAINER` before enabling the uploader. For Streamlit, set `AZURE_SQL_SERVER`, `AZURE_SQL_DATABASE`, `AZURE_SQL_USERNAME`, and `AZURE_SQL_PASSWORD`.
 
-Do not expose the camera HTTP service to the public internet. Use network segmentation, least-privilege cloud credentials, and encryption/authentication appropriate to the deployment.
+The original Azure Data Factory definition was not recovered. See `cloud/README.md` and `cloud/schema.sql` for the documented limits of the cloud companion.
