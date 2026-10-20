@@ -1,55 +1,7 @@
 {
-    "free_positive_labels": [
-        "walking",
-        "observing exhibits",
-        "reading information plaques",
-        "taking photos",
-        "sitting on benches",
-        "listening to audio guides",
-        "discussing exhibits",
-        "sketching or drawing",
-        "using assistive devices",
-        "moving slowly and carefully",
-        "calm"
-    ],
-    "free_negative_labels": [
-        "running",
-        "eating",
-        "drinking",
-        "touching exhibits",
-        "using flash photography",
-        "yelling",
-        "pushing or shoving",
-        "climbing on displays",
-        "vandalizing exhibits",
-        "littering",
-        "smoking",
-        "violent",
-        "problematic",
-        "eating",
-        "drinking"
-    ],
-    "closed_positive_labels": [
-        "taking_pictures",
-        "watching_calm"
-    ],
-    "closed_negative_labels": [
-        "blunt_object",
-        "dog",
-        "drinking",
-        "eating",
-        "knife",
-        "touching"
-    ],
-    "closed_labels":{
-        "0" : "blunt_object",
-        "1" : "dog",
-        "2" : "drinking",
-        "3" : "eating",
-        "4" : "knife",
-        "5" : "taking_pictures",
-        "6" : "touching",
-        "7" : "watching_calm"
-
-    }
+  "free_positive_labels": ["walking","observing exhibits","reading information plaques","taking photos","sitting on benches","listening to audio guides","discussing exhibits","sketching or drawing","using assistive devices","moving slowly and carefully","calm"],
+  "free_negative_labels": ["running","eating","drinking","touching exhibits","using flash photography","yelling","pushing or shoving","climbing on displays","vandalizing exhibits","littering","smoking","violent","problematic"],
+  "closed_positive_labels": ["taking_pictures","watching_calm"],
+  "closed_negative_labels": ["blunt_object","dog","drinking","eating","knife","touching"],
+  "closed_labels": {"0":"blunt_object","1":"dog","2":"drinking","3":"eating","4":"knife","5":"taking_pictures","6":"touching","7":"watching_calm"}
 }
