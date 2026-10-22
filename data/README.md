@@ -26,17 +26,25 @@ These images were produced with one participant in one controlled setting. They 
 
 The same 750 source images are retained in the two historical experimental layouts:
 
-- `image_dataset_multimodal/`: eight-class layout used by the historical multiclass experiments. The directory name is preserved for reproducibility, although the manuscript now uses the clearer term **eight-class** rather than “multimodal”.
+- `image_dataset_multimodal/`: eight-class layout used by the historical multiclass experiments. The directory name is preserved for reproducibility, although the manuscript now uses the clearer term **eight-class** rather than "multimodal".
 - `image_dataset_binary/`: binary positive/negative layout containing the same 750 images grouped into **550 negative** and **200 positive** examples.
 
 The files in the two directories are duplicates by content, organised differently to reproduce the historical training workflows. The larger working/source image directory used during project development is deliberately not included in the publication repository because it contains additional and duplicate images that were not part of the reported 750-image experimental dataset.
 
 ## Rights and licensing
 
-The author owns the behavioural images. The repository's MIT licence applies to software only and does not automatically license the image dataset. A dataset reuse licence should be stated explicitly in the final public/Zenodo release metadata.
+Copyright in the behavioural images is held by Juan Francisco Palomeque-Gonzalez.
+
+The 750-image behavioural dataset is released under the **Creative Commons Attribution 4.0 International licence (CC BY 4.0)**:
+
+https://creativecommons.org/licenses/by/4.0/
+
+Reuse, redistribution, and adaptation are permitted under the terms of CC BY 4.0, including the requirement to provide appropriate attribution and indicate whether changes were made.
+
+The repository's MIT licence applies to software only and does not replace the CC BY 4.0 licence for the image dataset.
 
 ## Reproducibility notes
 
-The historical experiments did not preserve a deterministic train/evaluation split seed. Different model pipelines also used different balancing procedures. The complete dataset supports inspection and future re-analysis, but does not by itself reproduce the exact historical split.
+The historical experiments did not preserve a deterministic train/evaluation split seed. Different model pipelines also used different balancing procedures. The complete dataset and training scripts therefore support reproduction of the documented training procedure and future re-analysis, but they do not guarantee recreation of the exact historical split, trained weights, or reported metrics.
 
-The final tagged GitHub release, including both dataset layouts, will be archived on Zenodo with the rest of the research companion.
+Trained model weights are intentionally not distributed. The final tagged GitHub release, including both dataset layouts, will be archived on Zenodo with the rest of the research companion.
