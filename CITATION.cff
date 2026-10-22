@@ -1,13 +1,14 @@
 cff-version: 1.2.0
-message: "If you use this research companion, please cite the associated CAA2026 proceedings manuscript."
+message: "If you use this research companion, please cite the associated CAA2026 proceedings manuscript and the archived research companion."
 title: "Heritage IoT Wireless Sensor Network"
 authors:
   - family-names: Palomeque-Gonzalez
     given-names: Juan Francisco
 date-released: 2026-10-19
 license: MIT
+doi: "10.5281/zenodo.23573395"
 repository-code: "https://github.com/jfpalomeque/heritage-iot-wireless-sensor-network"
-url: "https://github.com/jfpalomeque/heritage-iot-wireless-sensor-network"
+url: "https://doi.org/10.5281/zenodo.23573395"
 preferred-citation:
   type: article
   authors:
