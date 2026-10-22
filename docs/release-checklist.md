@@ -19,11 +19,12 @@ The repository is prepared as a research companion. The final archival tag shoul
 - [x] Include the complete 750-image behavioural dataset in both historical experimental layouts.
 - [x] Remove the larger working/source image directory from the publication repository.
 - [x] Confirm that the behavioural dataset will be archived with the tagged repository release on Zenodo.
+- [x] Release the behavioural dataset under CC BY 4.0.
+- [x] Decide not to distribute trained model weights; provide the complete dataset and training scripts for retraining instead.
+- [x] Document that the historical train/evaluation split seed was not preserved and that exact historical weights or metrics cannot be guaranteed.
 
 ## Pending before final tag
 
-- [ ] Choose and state the behavioural dataset reuse licence in the public/Zenodo metadata.
-- [ ] Decide whether model weights will be released and under what licence.
 - [ ] Add the final CAA2026 manuscript/preprint DOI when minted.
 - [ ] Run a final repository secret/private-address scan.
 - [ ] Confirm README and CITATION.cff point to the intended final manuscript citation.
