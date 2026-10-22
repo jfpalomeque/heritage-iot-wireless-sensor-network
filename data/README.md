@@ -1,6 +1,6 @@
 # Behavioural image dataset
 
-This repository is intended to include the complete behavioural image dataset used in the binary and eight-class image-classification experiments described in the manuscript.
+This repository includes the complete behavioural image dataset used in the binary and eight-class image-classification experiments described in the manuscript.
 
 ## Dataset provenance
 
@@ -24,22 +24,8 @@ The images were staged in one controlled setting with one participant. They shou
 
 ## Repository layout
 
-The intended layout is:
-
-```text
-data/
-  behaviour_images/
-    blunt_object/
-    dog/
-    drinking/
-    eating/
-    knife/
-    taking_pictures/
-    touching/
-    watching_calm/
-```
-
-The repository-wide image ignore rules explicitly allow images only inside `data/behaviour_images/`, so runtime camera captures remain excluded from version control.
+- `data/behaviour_images/` contains the curated behavioural dataset.
+- `image_dataset_binary/`, `image_dataset_multimodal/`, and `image_dataset_original/` are recovered source directories retained for reproducibility. They include historical original images and convenience subsets used by the experiments.
 
 ## Rights and licensing
 

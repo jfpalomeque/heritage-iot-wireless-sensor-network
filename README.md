@@ -45,11 +45,11 @@ The preserved ViT output files record epoch 3.0 for the reported runs, whereas t
 
 ## Data and models
 
-Raw behavioural images and trained model weights are intentionally not stored in Git. No external dataset or model release is claimed yet. See [data/README.md](data/README.md) and [models/README.md](models/README.md).
+The recovered binary, multiclass, and original image datasets are versioned in the repository root. The curated behavioural dataset and its rights statement are documented in [data/README.md](data/README.md). Confirm that the release conditions remain satisfied before changing the repository visibility. Trained model weights are not included; see [models/README.md](models/README.md).
 
 ## Release status
 
-This repository is currently being prepared for the CAA2026 companion release. The final public tag and Zenodo software DOI should be created only after the dataset/model availability decision and final manuscript DOI are resolved. See [docs/release-checklist.md](docs/release-checklist.md).
+This repository is currently being prepared for the CAA2026 companion release. The final public tag and Zenodo software DOI should be created only after the model availability decision and final manuscript DOI are resolved. See [docs/release-checklist.md](docs/release-checklist.md).
 
 ## Citation
 

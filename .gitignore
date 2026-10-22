@@ -15,11 +15,12 @@ __pycache__/
 test_images/
 captured_images/
 
-# Research checkpoints and incidental images
-image_dataset_*/
+# Model checkpoints and incidental runtime images
 *.jpg
 *.jpeg
 *.png
+# Recovered project datasets are intentionally versioned.
+!image_dataset_*/**
 *.safetensors
 *.bin
 hf_output/
