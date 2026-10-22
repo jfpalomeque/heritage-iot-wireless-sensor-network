@@ -19,7 +19,7 @@ def predict(model_path: str, image_path: str) -> int:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("model_path", help="directory containing a released checkpoint")
+    parser.add_argument("model_path", help="directory containing a locally trained checkpoint")
     parser.add_argument("image_path", help="image to classify")
     args = parser.parse_args()
     print(f"Predicted class index: {predict(args.model_path, args.image_path)}")
