@@ -38,7 +38,7 @@ See [docs/reproducibility.md](docs/reproducibility.md) and [docs/results.md](doc
 2. Use `configs/wsn_config.example.json` as a safe minimal scaffold, or consult `configs/wsn_config.historical.example.json` to inspect the original experimental topology and schedules.
 3. Install the relevant dependency set from `hub/requirements.txt`, `ml/requirements.txt`, or `cloud/requirements.txt`.
 4. Keep Wi-Fi credentials, cloud credentials, runtime logs, and private deployment addresses outside version control.
-5. Set `VIT_MODEL_PATH` explicitly if image classification is enabled because model binaries are not included.
+5. Train the ViT classifiers from the provided scripts and datasets if model inference is required. Trained model binaries are intentionally not distributed.
 
 ## Historical results
 
@@ -48,9 +48,9 @@ The preserved ViT output files record epoch 3.0 for the reported runs, whereas t
 
 ## Data and models
 
-The complete 750-image behavioural dataset is included in two historical layouts: eight-class and binary. Both contain the same source images organised differently for the corresponding experiments. Provenance, class counts, rights, limitations, and licensing notes are documented in [data/README.md](data/README.md).
+The complete 750-image behavioural dataset is included in two historical layouts: eight-class and binary. Both contain the same source images organised differently for the corresponding experiments. Provenance, class counts, rights, limitations, and licensing information are documented in [data/README.md](data/README.md).
 
-Trained model weights are not included; see [models/README.md](models/README.md).
+Trained model weights are intentionally not distributed. The repository provides the training scripts and complete experimental dataset needed to retrain the ViT classifiers. Because the historical experiments did not preserve a deterministic train/evaluation split seed, retraining reproduces the documented procedure but is not expected to recreate the exact historical weights or metrics. See [models/README.md](models/README.md).
 
 ## Release status
 
@@ -62,4 +62,4 @@ This repository is being prepared for the CAA2026 companion release. The final t
 
 ## Licence
 
-Code is available under the [MIT License](LICENSE). The behavioural image dataset is documented separately in [data/README.md](data/README.md); its reuse licence should be stated explicitly in the final public/Zenodo release metadata.
+Code is available under the [MIT License](LICENSE). The behavioural image dataset is released under the [Creative Commons Attribution 4.0 International licence (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). See [data/README.md](data/README.md) for dataset-specific rights, attribution, and limitations.
