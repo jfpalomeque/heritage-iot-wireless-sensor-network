@@ -1,6 +1,6 @@
 # Reproducibility
 
-This repository is a curated technical companion to an archived MSc project. It retains source code, Fritzing hardware sketches, configurations, label definitions, and recorded metric files while intentionally excluding secrets, raw operational logs, behavioural images, and model binaries.
+This repository is a curated technical companion to an archived MSc project. It retains source code, Fritzing hardware sketches, configurations, label definitions, the complete 750-image behavioural dataset, and recorded metric files while intentionally excluding secrets, raw operational logs, and trained model binaries.
 
 ## Source selection
 
@@ -24,6 +24,12 @@ The companion corrects several code defects found during manuscript and reposito
 
 The recovered ViT training scripts specify five epochs, while all preserved result records for the reported ViT runs store `epoch: 3.0`. The repository does not infer which later editing step produced this mismatch. The manuscript reports the preserved historical outcomes and does not claim that the current training scripts exactly recreate those runs.
 
+## Reproducing the training procedure
+
+The complete behavioural dataset and recovered training scripts are included so that the binary and eight-class ViT training procedures can be rerun. Trained model binaries are intentionally not distributed.
+
+The historical experiments did not preserve a deterministic train/evaluation split seed. Consequently, a new run can reproduce the documented procedure but should not be expected to generate the exact historical split, trained weights, or reported metrics.
+
 ## Known limitations
 
 - Exact dependency versions were not captured in the original project.
@@ -33,6 +39,6 @@ The recovered ViT training scripts specify five epochs, while all preserved resu
 - The original Azure Data Factory pipeline export and SQL DDL were not preserved. `cloud/schema.sql` is a compatible reference schema, not recovered infrastructure.
 - Runtime configuration executes trusted Python expressions through `exec`.
 - Camera HTTP endpoints in the prototype are unauthenticated and must not be exposed directly to untrusted networks.
-- Raw images and model weights are not currently distributed from this repository.
+- Trained model weights are not distributed.
 
-Reported metrics are the historical experiment record. New comparative claims should be based on a separately versioned dataset/model release with documented split seeds, dependencies, checksums, and evaluation outputs.
+Reported metrics are the historical experiment record. New comparative claims should be based on newly versioned training runs with documented split seeds, dependencies, checksums, and evaluation outputs.
