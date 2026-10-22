@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use this research companion, please cite the associated manuscript or preprint."
+message: "If you use this research companion, please cite the associated CAA2026 proceedings manuscript."
 title: "Heritage IoT Wireless Sensor Network"
 authors:
   - family-names: Palomeque-Gonzalez
@@ -7,14 +7,11 @@ authors:
 date-released: 2026-10-19
 license: MIT
 repository-code: "https://github.com/jfpalomeque/heritage-iot-wireless-sensor-network"
-url: "https://arxiv.org/abs/2508.00849"
+url: "https://github.com/jfpalomeque/heritage-iot-wireless-sensor-network"
 preferred-citation:
   type: article
   authors:
     - family-names: Palomeque-Gonzalez
       given-names: Juan Francisco
-  title: "A Modular, Low-Cost IoT System for Environmental and Behavioural Monitoring in Cultural Heritage Sites"
-  year: 2025
-  archive: arXiv
-  archive_location: "2508.00849"
-  url: "https://arxiv.org/abs/2508.00849"
+  title: "Low-Cost IoT Monitoring for Cultural Heritage: Design and Evaluation of a Modular Wireless Sensor Network"
+  year: 2026
