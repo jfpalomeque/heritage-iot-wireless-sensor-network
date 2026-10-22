@@ -1,6 +1,6 @@
 # Modular IoT Monitoring for Cultural Heritage
 
-Research companion to *A Modular, Low-Cost IoT System for Environmental and Behavioural Monitoring in Cultural Heritage Sites* ([arXiv:2508.00849](https://arxiv.org/abs/2508.00849)) and the revised CAA2026 proceedings manuscript *Low-Cost IoT Monitoring for Cultural Heritage: Design and Evaluation of a Modular Wireless Sensor Network*.
+Research companion to the revised CAA2026 proceedings manuscript *Low-Cost IoT Monitoring for Cultural Heritage: Design and Evaluation of a Modular Wireless Sensor Network*.
 
 Developed from the MSc Advanced Computing final project at the University of the West of Scotland (2023-2024). The project was awarded **Distinction** and received the **UWS Court Medal for academic performance**.
 
@@ -35,7 +35,7 @@ See [docs/reproducibility.md](docs/reproducibility.md) and [docs/results.md](doc
 ## Quick start
 
 1. Read [docs/architecture.md](docs/architecture.md) and [docs/deployment.md](docs/deployment.md).
-2. Use `configs/wsn_config.example.json` as a safe minimal scaffold, or consult `configs/wsn_config.historical.example.json` to inspect the original experimental topology and schedules.
+2. Use `configs/wsn_config.example.json` as a safe minimal scaffold, or consult `configs/wsn_config.historical.example.json` to inspect the historical experimental topology and schedules.
 3. Install the relevant dependency set from `hub/requirements.txt`, `ml/requirements.txt`, or `cloud/requirements.txt`.
 4. Keep Wi-Fi credentials, cloud credentials, runtime logs, and private deployment addresses outside version control.
 5. Train the ViT classifiers from the provided scripts and datasets if model inference is required. Trained model binaries are intentionally not distributed.
@@ -54,11 +54,11 @@ Trained model weights are intentionally not distributed. The repository provides
 
 ## Release status
 
-This repository is being prepared for the CAA2026 companion release. The final tagged release, including the behavioural dataset, will be archived on Zenodo. The final software DOI and CAA2026 manuscript/preprint DOI should be added to the repository metadata once minted. See [docs/release-checklist.md](docs/release-checklist.md).
+This repository is being prepared for the CAA2026 companion release. The final tagged release, including the behavioural dataset, will be archived on Zenodo. The final software DOI and CAA2026 manuscript DOI should be added to the repository metadata once minted. See [docs/release-checklist.md](docs/release-checklist.md).
 
 ## Citation
 
-`CITATION.cff` currently points to the arXiv preprint. It should be updated to the final CAA2026 DOI once that DOI exists.
+`CITATION.cff` identifies the CAA2026 proceedings manuscript as the preferred citation. The final publication DOI should be added once it is available.
 
 ## Licence
 
