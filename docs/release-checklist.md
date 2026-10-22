@@ -22,12 +22,13 @@ The repository is prepared as a research companion. The final archival tag shoul
 - [x] Release the behavioural dataset under CC BY 4.0.
 - [x] Decide not to distribute trained model weights; provide the complete dataset and training scripts for retraining instead.
 - [x] Document that the historical train/evaluation split seed was not preserved and that exact historical weights or metrics cannot be guaranteed.
+- [x] Remove the obsolete placeholder for a separate behavioural-image directory.
+- [x] Remove the older arXiv version as the repository's preferred citation and point README/CITATION.cff to the CAA2026 manuscript.
+- [x] Run a repository secret/private-address scan; no tracked credentials or private IP addresses were identified.
 
 ## Pending before final tag
 
-- [ ] Add the final CAA2026 manuscript/preprint DOI when minted.
-- [ ] Run a final repository secret/private-address scan.
-- [ ] Confirm README and CITATION.cff point to the intended final manuscript citation.
+- [ ] Add the final CAA2026 manuscript DOI when minted.
 - [ ] Make the repository public.
 - [ ] Create the final tag, proposed `v1.0.0-caa2026`.
 - [ ] Archive that exact tag on Zenodo and add the software DOI back to README/CITATION.cff.
