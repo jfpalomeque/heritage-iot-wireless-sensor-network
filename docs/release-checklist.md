@@ -15,10 +15,11 @@ The repository is prepared as a research companion, but the final archival relea
 - [x] Document missing Azure Data Factory infrastructure and provide only a compatible reference SQL schema.
 - [x] Preserve the exact historical CLIP label list separately from the cleaned future-run configuration.
 - [x] Update citation metadata with the author's full given name.
+- [x] Confirm that the author is the sole photographed participant and holds the rights to the behavioural images.
 
 ## Pending before final tag
 
-- [ ] Decide whether the behavioural image dataset will be released, restricted, or unavailable.
+- [ ] Decide whether the behavioural image dataset will be released with the companion materials or as a separate deposit.
 - [ ] Decide whether model weights will be released and under what licence.
 - [ ] Add external dataset/model DOI or URL only after those deposits exist.
 - [ ] Add the final CAA2026 manuscript/preprint DOI when minted.
