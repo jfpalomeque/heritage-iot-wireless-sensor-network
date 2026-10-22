@@ -52,13 +52,17 @@ The complete 750-image behavioural dataset is included in two historical layouts
 
 Trained model weights are intentionally not distributed. The repository provides the training scripts and complete experimental dataset needed to retrain the ViT classifiers. Because the historical experiments did not preserve a deterministic train/evaluation split seed, retraining reproduces the documented procedure but is not expected to recreate the exact historical weights or metrics. See [models/README.md](models/README.md).
 
-## Release status
+## Archived release
 
-This repository is being prepared for the CAA2026 companion release. The final tagged release, including the behavioural dataset, will be archived on Zenodo. The final software DOI and CAA2026 manuscript DOI should be added to the repository metadata once minted. See [docs/release-checklist.md](docs/release-checklist.md).
+The CAA2026 research companion release is permanently archived on Zenodo:
+
+**DOI: [10.5281/zenodo.23573395](https://doi.org/10.5281/zenodo.23573395)**
+
+The Zenodo record provides the archival version of the code, data, configurations, results, and documentation associated with the CAA2026 manuscript. The GitHub repository remains the live source repository.
 
 ## Citation
 
-`CITATION.cff` identifies the CAA2026 proceedings manuscript as the preferred citation. The final publication DOI should be added once it is available.
+`CITATION.cff` identifies the CAA2026 proceedings manuscript as the preferred scholarly citation and records the Zenodo DOI for this research companion. The final publication DOI for the proceedings article should be added once it is available.
 
 ## Licence
 
