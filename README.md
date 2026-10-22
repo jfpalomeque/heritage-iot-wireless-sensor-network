@@ -17,6 +17,9 @@ The prototype combines Bluetooth Low Energy sensor nodes, ESP32-CAM nodes, a Ras
 - `hardware/` - Fritzing circuit sketches and a reconstructed component inventory.
 - `configs/` - minimal configuration, sanitized historical deployment configuration, and image-label definitions.
 - `results/` - preserved ViT JSON outputs and structured historical result summaries.
+- `image_dataset_multimodal/` - the 750 behavioural images in the historical eight-class layout.
+- `image_dataset_binary/` - the same 750 behavioural images in the historical binary layout.
+- `data/` - dataset provenance, rights, class counts, and reproducibility documentation.
 - `docs/` - architecture, deployment, reproducibility, results, and release notes.
 
 ## Reproducibility status
@@ -34,7 +37,7 @@ See [docs/reproducibility.md](docs/reproducibility.md) and [docs/results.md](doc
 1. Read [docs/architecture.md](docs/architecture.md) and [docs/deployment.md](docs/deployment.md).
 2. Use `configs/wsn_config.example.json` as a safe minimal scaffold, or consult `configs/wsn_config.historical.example.json` to inspect the original experimental topology and schedules.
 3. Install the relevant dependency set from `hub/requirements.txt`, `ml/requirements.txt`, or `cloud/requirements.txt`.
-4. Keep Wi-Fi credentials, cloud credentials, runtime logs, images, and private deployment addresses outside version control.
+4. Keep Wi-Fi credentials, cloud credentials, runtime logs, and private deployment addresses outside version control.
 5. Set `VIT_MODEL_PATH` explicitly if image classification is enabled because model binaries are not included.
 
 ## Historical results
@@ -45,11 +48,13 @@ The preserved ViT output files record epoch 3.0 for the reported runs, whereas t
 
 ## Data and models
 
-The recovered binary, multiclass, and original image datasets are versioned in the repository root. The curated behavioural dataset and its rights statement are documented in [data/README.md](data/README.md). Confirm that the release conditions remain satisfied before changing the repository visibility. Trained model weights are not included; see [models/README.md](models/README.md).
+The complete 750-image behavioural dataset is included in two historical layouts: eight-class and binary. Both contain the same source images organised differently for the corresponding experiments. Provenance, class counts, rights, limitations, and licensing notes are documented in [data/README.md](data/README.md).
+
+Trained model weights are not included; see [models/README.md](models/README.md).
 
 ## Release status
 
-This repository is currently being prepared for the CAA2026 companion release. The final public tag and Zenodo software DOI should be created only after the model availability decision and final manuscript DOI are resolved. See [docs/release-checklist.md](docs/release-checklist.md).
+This repository is being prepared for the CAA2026 companion release. The final tagged release, including the behavioural dataset, will be archived on Zenodo. The final software DOI and CAA2026 manuscript/preprint DOI should be added to the repository metadata once minted. See [docs/release-checklist.md](docs/release-checklist.md).
 
 ## Citation
 
@@ -57,4 +62,4 @@ This repository is currently being prepared for the CAA2026 companion release. T
 
 ## Licence
 
-Code is available under the [MIT License](LICENSE). Dataset and model licences, if separate releases are created, must be stated independently.
+Code is available under the [MIT License](LICENSE). The behavioural image dataset is documented separately in [data/README.md](data/README.md); its reuse licence should be stated explicitly in the final public/Zenodo release metadata.

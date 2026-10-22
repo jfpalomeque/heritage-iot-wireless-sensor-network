@@ -19,18 +19,15 @@ captured_images/
 *.jpg
 *.jpeg
 *.png
-# Recovered project datasets are intentionally versioned.
-!image_dataset_*/**
 *.safetensors
 *.bin
 hf_output/
 
-# The curated behavioural dataset is intentionally versioned
-!data/behaviour_images/
-!data/behaviour_images/**/
-!data/behaviour_images/**/*.jpg
-!data/behaviour_images/**/*.jpeg
-!data/behaviour_images/**/*.png
+# Publication datasets are intentionally versioned.
+!image_dataset_binary/
+!image_dataset_binary/**
+!image_dataset_multimodal/
+!image_dataset_multimodal/**
 
 # Editor and platform files
 .vscode/
