@@ -15,7 +15,7 @@ __pycache__/
 test_images/
 captured_images/
 
-# Research data and checkpoints: distribute through versioned releases, not Git
+# Research checkpoints and incidental images
 image_dataset_*/
 *.jpg
 *.jpeg
@@ -23,6 +23,13 @@ image_dataset_*/
 *.safetensors
 *.bin
 hf_output/
+
+# The curated behavioural dataset is intentionally versioned
+!data/behaviour_images/
+!data/behaviour_images/**/
+!data/behaviour_images/**/*.jpg
+!data/behaviour_images/**/*.jpeg
+!data/behaviour_images/**/*.png
 
 # Editor and platform files
 .vscode/
